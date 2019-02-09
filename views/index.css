@@ -68,3 +68,7 @@ html {
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #5d666f !important;
 }
+
+.links {
+    color: white !important;
+}
