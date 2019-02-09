@@ -1,0 +1,27 @@
+{
+  "name": "snap-application",
+  "version": "1.0.0",
+  "description": "Web Application for WPI SNAP program",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WPI-SNAP/SNAP-Application.git"
+  },
+  "author": "Jack Palmstrom, Yosuke Nakamura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WPI-SNAP/SNAP-Application/issues"
+  },
+  "homepage": "https://github.com/WPI-SNAP/SNAP-Application#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "passport": "^0.4.0",
+    "path": "^0.12.7"
+  }
+}
