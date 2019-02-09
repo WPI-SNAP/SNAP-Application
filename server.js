@@ -18,15 +18,31 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.set('view engine', 'ejs');
 
 // Create connection to mySQL database
-mariadb.createConnection({
-    //properties
+// mariadb.createConnection({
+//     //properties
+//     socketPath: '/var/run/mysqld/mysqld.sock',
+//     user: 'jnpalmstrom',
+//     password: 'Robert35421!',
+//     database: 'snapDB'
+// }).then(conn => {
+//     console.log(conn);
+// });
+
+// MariaDB Connection
+pool = mariadb.createPool({
     socketPath: '/var/run/mysqld/mysqld.sock',
-    user: 'jnpalmstrom@localhost',
+    user: 'jnpalmstrom',
     password: 'Robert35421!',
-    database: 'snapDB'
-}).then(conn => {
-    console.log(conn);
+    database: 'snapDB',
+    connectionLimit: 5
 });
+pool.getConnection()
+    .then(conn => {
+
+    }).catch(err => {
+    //not connected
+});
+
 
 //Define express js routes
 require('./routes/routes.js')(app);
