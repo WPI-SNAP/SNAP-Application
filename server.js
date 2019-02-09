@@ -21,7 +21,8 @@ app.set('view engine', 'ejs');
 mariadb.createConnection({
     //properties
     socketPath: '/var/run/mysqld/mysqld.sock',
-    user: 'jnpalmstrom',
+    ssl: true,
+    user: 'jnpalmstrom@localhost',
     password: 'Robert35421!',
     database: 'snapDB'
 }).then(conn => {
