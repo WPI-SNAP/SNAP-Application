@@ -91,3 +91,7 @@ html {
 .links a {
     color: white !important;
 }
+
+.mt-3 {
+    margin-top: 2rem!important;
+}
