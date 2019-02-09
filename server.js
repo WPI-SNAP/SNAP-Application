@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 let mysql = require('mysql');
+let mariadb = require('mariadb');
 let path = require("path");
 let ejs = require('ejs');
 
@@ -17,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.set('view engine', 'ejs');
 
 // Create connection to mySQL database
-let connection = mysql.createConnection({
+let connection = mariadb.createConnection({
     //properties
     socketPath: '/var/run/mysqld/mysqld.sock',
     user: 'jnpalmstrom',
