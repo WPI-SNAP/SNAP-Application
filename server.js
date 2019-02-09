@@ -19,10 +19,10 @@ app.set('view engine', 'ejs');
 // Create connection to mySQL database
 let connection = mysql.createConnection({
     //properties
-    host: 'snapdispatcherdb.ca40maoxylrp.us-east-1.rds.amazonaws.com',
+    host: 'localhost',
     port: '3306',
-    user: 'masterAdmin',
-    password: 'Pa55word',
+    user: 'jnpalmstrom',
+    password: 'Robert35421!',
     database: 'snapDB'
 });
 
