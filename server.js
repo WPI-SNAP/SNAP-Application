@@ -32,7 +32,6 @@ app.set('view engine', 'ejs');
 pool = mariadb.createPool({
     socketPath: '/var/run/mysqld/mysqld.sock',
     user: 'jnpalmstrom',
-    password: 'Robert35421!',
     database: 'snapDB',
     connectionLimit: 5
 });
