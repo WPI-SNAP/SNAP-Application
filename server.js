@@ -38,9 +38,9 @@ pool = mariadb.createPool({
 });
 pool.getConnection()
     .then(conn => {
-
+        console.log("Connected baby!");
     }).catch(err => {
-    //not connected
+    console.log(err);
 });
 
 
