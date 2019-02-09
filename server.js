@@ -19,8 +19,7 @@ app.set('view engine', 'ejs');
 // Create connection to mySQL database
 let connection = mysql.createConnection({
     //properties
-    host: 'localhost',
-    port: '3306',
+    socketPath: '/var/run/mysqld/mysqld.sock',
     user: 'jnpalmstrom',
     password: 'Robert35421!',
     database: 'snapDB'
