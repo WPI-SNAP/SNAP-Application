@@ -3,7 +3,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 let mysql = require('mysql');
-let mariadb = require('mariadb');
 let path = require("path");
 let ejs = require('ejs');
 
