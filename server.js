@@ -18,28 +18,22 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.set('view engine', 'ejs');
 
 // Create connection to mySQL database
-// mariadb.createConnection({
-//     //properties
-//     socketPath: '/var/run/mysqld/mysqld.sock',
-//     user: 'jnpalmstrom',
-//     password: 'Robert35421!',
-//     database: 'snapDB'
-// }).then(conn => {
-//     console.log(conn);
-// });
-
-// MariaDB Connection
-pool = mariadb.createPool({
-    socketPath: '/var/run/mysqld/mysqld.sock',
-    user: 'jnpalmstrom',
-    database: 'snapDB',
-    connectionLimit: 5
+var connection = mysql.createConnection({
+    //properties
+    host: 'snapdispatcherdb.ca40maoxylrp.us-east-1.rds.amazonaws.com',
+    port: '3306',
+    user: 'masterAdmin',
+    password: 'Pa55word',
+    database: 'snapDB'
 });
-pool.getConnection()
-    .then(conn => {
-        console.log("Connected baby!");
-    }).catch(err => {
-    console.log(err);
+
+connection.connect(function (err) {
+    if(err) {
+        console.log(err);
+    }
+    else {
+        console.log("DB is connected!")
+    }
 });
 
 
