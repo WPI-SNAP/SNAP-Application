@@ -18,21 +18,14 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.set('view engine', 'ejs');
 
 // Create connection to mySQL database
-let connection = mariadb.createConnection({
+mariadb.createConnection({
     //properties
     socketPath: '/var/run/mysqld/mysqld.sock',
     user: 'jnpalmstrom',
     password: 'Robert35421!',
     database: 'snapDB'
-});
-
-connection.connect(function (err) {
-    if(err) {
-        console.log(err);
-    }
-    else {
-        console.log("DB is connected!")
-    }
+}).then(conn => {
+    console.log(conn);
 });
 
 //Define express js routes
