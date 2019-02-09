@@ -13,6 +13,11 @@ module.exports = function (app) {
         res.render('index.ejs', {});
     });
 
+    // Direct to the home page
+    app.get('/signUp', function (req, res) {
+        res.render('signUp.ejs', {});
+    });
+
     // Direct to the Gateway Shuttle Info page
     app.get('/shuttleInfo', function (req, res) {
         res.render('shuttleInfo.ejs', {});
