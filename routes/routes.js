@@ -9,6 +9,11 @@ module.exports = function (app) {
     });
 
     // Direct to the home page
+    app.get('/dispatcher', function (req, res) {
+        res.render('index.ejs', {});
+    });
+
+    // Direct to the home page
     app.get('/index', function (req, res) {
         res.render('index.ejs', {});
     });
