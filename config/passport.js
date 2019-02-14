@@ -90,7 +90,10 @@ module.exports = function(passport) {
         },
         function(req, username, password, done) { // callback with email and password from our form
 
-            connection.query("SELECT * FROM `superUsers` WHERE username` = '" + username + "'",function(err,rows){
+            let loginStatement = "SELECT * FROM superUsers WHERE username = ?";
+            let loginObj = [req.body.username];
+
+            connection.query(loginStatement, loginObj, function(err,rows){
                 if (err)
                     return done(err);
                 if (!rows.length) {
