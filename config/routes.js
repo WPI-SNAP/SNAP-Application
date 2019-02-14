@@ -1,11 +1,25 @@
 const mysql = require('mysql');
 const moment = require('moment');
 
-module.exports = function (app) {
+module.exports = function (app, passport) {
+
+    ////////////////////////////////////////////////////////////////////
+    // WPI SAML Login for students & dispatchers
+    ////////////////////////////////////////////////////////////////////
 
     // Direct to the home page
     app.get('/', function (req, res) {
-        res.render('index.ejs', {});
+        if (req.isAuthenticated()) {
+            res.render('index.ejs',
+                {
+                    user: req.user
+                });
+        } else {
+            res.render('index.ejs',
+                {
+                    user: null
+                });
+        }
     });
 
     // Direct to the home page
@@ -32,6 +46,27 @@ module.exports = function (app) {
     app.get('/policy', function (req, res) {
         res.render('policy.ejs', {});
     });
+
+    ////////////////////////////////////////////////////////////////////
+    // Local Login for Super User
+    ////////////////////////////////////////////////////////////////////
+    app.get('/superLogin', function (req, res) {
+        res.render('index.ejs', {});
+    });
+
+    //Process login form
+    app.post('/submitSuperLogin', passport.authenticate('local-login',{
+        successRedirect : '/superHome',
+        failureRedirect : '/superLogin',
+        failureFlash : true
+    }));
+
+
+
+
+
+
+
 
 
     // Adds the SNAP Ride Request newRequest to the AWS MySQL DB

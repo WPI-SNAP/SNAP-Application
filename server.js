@@ -2,9 +2,14 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
 let mysql = require('mysql');
 let path = require("path");
 let ejs = require('ejs');
+
+require('./config/passport.js')(passport);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -34,9 +39,8 @@ connection.connect(function (err) {
     }
 });
 
-
-//Define express js routes
-require('./routes/routes.js')(app);
+//Define express js config
+require('./config/routes.js')(app, passport);
 
 // Listen for the server to start
 app.listen(port, function () {
