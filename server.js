@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-
+const passport = require('passport');
 let mysql = require('mysql');
 let path = require("path");
 let ejs = require('ejs');
