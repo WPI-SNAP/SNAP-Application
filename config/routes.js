@@ -61,6 +61,10 @@ module.exports = function (app, passport) {
         failureFlash : true
     }));
 
+    app.get('/superHome', function (req, res) {
+        res.render('signUp.ejs', {});
+    });
+
 
 
 
