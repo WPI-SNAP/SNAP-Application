@@ -26,8 +26,11 @@ module.exports = function(passport) {
     });
 
     // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
-        connection.query("SELECT * FROM superUsers where username = " + id,function(err,rows){
+    passport.deserializeUser(function(username, done) {
+
+        let deserializeStmt = "SELECT * FROM superUsers WHERE username = ?";
+
+        connection.query(deserializeStmt, username, function(err,rows){
             done(err, rows[0]);
         });
     });

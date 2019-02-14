@@ -65,14 +65,6 @@ module.exports = function (app, passport) {
         res.render('signUp.ejs', {});
     });
 
-
-
-
-
-
-
-
-
     // Adds the SNAP Ride Request newRequest to the AWS MySQL DB
     app.post('/submitRequest', function (req, res) {
         // Connect to the dispatcher database
