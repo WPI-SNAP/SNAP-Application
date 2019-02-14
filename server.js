@@ -4,6 +4,7 @@ const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 const passport = require('passport');
 let mysql = require('mysql');
 let path = require("path");
@@ -38,6 +39,15 @@ connection.connect(function (err) {
         console.log("DB is connected!")
     }
 });
+
+//stuff for passport
+app.use(session({secret: 'SNAPproject',
+    saveUninitialized: true,
+    resave: true}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 //Define express js config
 require('./config/routes.js')(app, passport);
