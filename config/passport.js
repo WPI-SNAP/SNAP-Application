@@ -22,12 +22,12 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        done(null, user.id);
+        done(null, user.username);
     });
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        connection.query("select * from users where id = " + id,function(err,rows){
+        connection.query("SELECT * FROM superUsers where username = " + id,function(err,rows){
             done(err, rows[0]);
         });
     });
@@ -101,10 +101,11 @@ module.exports = function(passport) {
                 }
 
                 // if the user is found but the password is wrong
-                if (!( rows[0].password === password))
+                if (!(rows[0].password === password))
                     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
+                console.log("Rows = " + rows[0]);
                 return done(null, rows[0]);
             });
         }));
