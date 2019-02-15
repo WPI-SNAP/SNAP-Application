@@ -9,6 +9,7 @@ module.exports = function (app, config, passport) {
 
     // Direct to the home page
     app.get('/', function (req, res) {
+        /*
         if (req.isAuthenticated()) {
             res.render('index.ejs',
                 {
@@ -20,21 +21,13 @@ module.exports = function (app, config, passport) {
                     user: null
                 });
         }
+        */
+        res.render('studentHome.ejs', {});
     });
 
     // Direct to the home page
     app.get('/dispatcher', function (req, res) {
         res.render('index.ejs', {});
-    });
-
-    // Direct to the home page
-    app.get('/index', function (req, res) {
-        res.render('index.ejs', {});
-    });
-
-    // Direct to the home page
-    app.get('/signUp', function (req, res) {
-        res.render('signUp.ejs', {});
     });
 
     // Direct to the Gateway Shuttle Info page
@@ -98,6 +91,11 @@ module.exports = function (app, config, passport) {
 
     //TODO: Create Admin dashboard
     app.get('/superHome', function (req, res) {
+        res.render('signUp.ejs', {});
+    });
+
+    // Direct to the home page
+    app.get('/signUp', function (req, res) {
         res.render('signUp.ejs', {});
     });
 

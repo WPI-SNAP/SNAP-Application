@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>SNAP Student</title>
+    <link rel="icon" href="WPI_logo.png">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="studentHome.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3 class="snap-header">SNAP</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/index">Home</a>
+            </li>
+            <li class="active">
+                <a href="/shuttleInfo">Shuttles</a>
+            </li>
+            <li>
+                <a href="/policy">Policy</a>
+            </li>
+            <li>
+                <a href="#">Contact SNAP</a>
+            </li>
+        </ul>
+
+        <div>
+            <p id="bottom">SNAP: 508-831-6111</p>
+        </div>
+    </nav>
+
+    <!-- Menu Button -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Menu</span>
+                </button>
+
+            </div>
+        </nav>
+
+        <!-- Shuttle Info -->
+        <div class="container">
+            <h3>Gateway Shuttle Hours:</h3>
+            <h5 style="text-decoration: underline">C Term: </h5>
+            <div>
+                <p class="shuttle-hours">Monday: 7:30AM - 5:30 PM</p>
+            </div>
+            <div>
+                <p class="shuttle-hours">Tuesday: 7:30AM - 5:30 PM</p>
+            </div>
+            <div>
+                <p class="shuttle-hours">Wednesday: 7:30AM - 5:30 PM</p>
+            </div>
+            <div>
+                <p class="shuttle-hours">Thursday: 7:30AM - 5:30 PM</p>
+            </div>
+            <div>
+                <p class="shuttle-hours">Friday: 7:30AM - 5:30 PM</p>
+            </div>
+            <div>
+                <p class="shuttle-desc">These are the hours for the gateway shuttle. For more information on the Gateway shuttle service,
+                follow this link: <a id="shuttle-link" href="http://www.wpi.edu/student-experience/resources/safety/campus-transportation/gateway-shuttle">Gateway Shuttle</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
+    });
+</script>
+
+<script>
+    function yesnoCheck() {
+        if (document.getElementById('yesCheck').checked) {
+            document.getElementById('ifYes').style.visibility = 'visible';
+        }
+        else document.getElementById('ifYes').style.visibility = 'hidden';
+    }
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+/*
+    ADDITIONAL DEMO STYLE, NOT IMPORTANT TO MAKE THINGS WORK BUT TO MAKE IT A BIT NICER :)
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+/*
+    Shuttle Styles
+ */
+.shuttle-hours {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+.shuttle-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: black;
+}
+
+#shuttle-link {
+    color: blue;
+    text-decoration: underline;
+
+}
+
+#shuttle-link:hover {
+    cursor: pointer;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    min-width: 25%;
+    max-width: 25%;
+    min-height: 100vh;
+    background: #cc3342;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #ac2b37;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #661921;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 8px;
+}
+
+#sidebar ul li a {
+    padding: 8px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #cc3342;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #ac2b37;
+}
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #ac2b37;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar.active {
+    margin-left: -25%;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -25%;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+
+    #form-inline {
+        margin-right: 4%;
+        margin-left: 4%;
+    }
+}
+
+@media (min-width: 576px) {
+    .snap-header {
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .snap-header {
+        text-align: center !important;
+    }
+}
+
+#bottom {
+    text-align: center;
+    color: white;
+    font-size: 0.85em;
+}
+
+.btn {
+    background-color: #ac2b37 !important;
+    text-decoration: #ac2b37 !important;
+    border-color: black !important;
+    box-shadow: none!important;
+}
+
+.btn-info {
+    background-color: #ac2b37 !important;
+    text-decoration: #ac2b37 !important;
+    border-color: black !important;
+    box-shadow: none!important;
+}
+
+/*
+    Policy Page Styles
+ */
+.policy-list {
+    margin-top: 2%;
+}
+
+ol {
+    margin: 0 0 1.5em;
+    padding: 0;
+    counter-reset: item;
+}
+
+ol > li {
+    margin: 0;
+    padding: 0 0 0 2em;
+    text-indent: -2em;
+    list-style-type: none;
+    counter-increment: item;
+}
+
+ol > li:before {
+    display: inline-block;
+    width: 1em;
+    padding-right: 0.5em;
+    font-weight: bold;
+    text-align: right;
+    content: counter(item) ".";
+}
+
+
+.form-check-input {
+    margin-left: 4px !important;
+}
