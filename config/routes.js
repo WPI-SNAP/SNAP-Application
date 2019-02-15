@@ -92,7 +92,7 @@ module.exports = function (app, config, passport) {
         failureRedirect: '/superLogin',
         failureFlash: true
     }));
-    
+
     app.get('/superHome', function (req, res) {
         if(!req.isAuthenticated()) res.redirect('/');
         else {
