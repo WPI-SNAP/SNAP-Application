@@ -171,7 +171,7 @@ module.exports = function (app, config, passport) {
             console.log("Going to: " + req.body.goingTo);
             dispatcherDB.end();
             // Sends the user back to the home page
-            res.redirect('/index');
+            res.redirect('/dispatcher');
         });
     });
 
@@ -262,7 +262,7 @@ module.exports = function (app, config, passport) {
             console.log('deleted ' + results.affectedRows + ' rows');
             dispatcherDB.end();
             // Sends the user back to the home page
-            res.redirect('/index');
+            res.redirect('/dispatcher');
         });
 
     });
@@ -349,7 +349,7 @@ module.exports = function (app, config, passport) {
                 console.log('deleted ' + results.affectedRows + ' rows');
                 // Sends the user back to the home page
                 dispatcherDB.end();
-                res.redirect('/index');
+                res.redirect('/dispatcher');
             });
 
         });
@@ -444,7 +444,7 @@ module.exports = function (app, config, passport) {
             }
 
             dispatcherDB.end();
-            res.redirect('/index');
+            res.redirect('/dispatcher');
         });
 
 
@@ -534,7 +534,7 @@ module.exports = function (app, config, passport) {
                 console.log('deleted ' + results.affectedRows + ' rows');
                 // Sends the user back to the home page
                 dispatcherDB.end();
-                res.redirect('/index');
+                res.redirect('/dispatcher');
             });
         });
     });
