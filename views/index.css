@@ -1,0 +1,284 @@
+html,body{
+    margin:0;
+    padding:0;
+}
+
+/*split pane styles
+ Set width of each pane to 50% of the screen
+ Position has to be absolute to show the right pane
+ */
+.split{
+    position:absolute;
+    width:50%;
+}
+
+/* Left side*/
+.leftSplit{
+    left: 0; /* placed at the left end */
+}
+
+/* Right side*/
+.rightSplit{
+    right:0; /* placed at the right end */
+}
+
+ul h3 {
+    text-align: center;
+    z-index: 0;
+}
+
+/* Navigation Bar Styles */
+.navLeft {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ac2b37;
+    width: 100%;
+    float: left;
+    z-index: 0;
+    border-radius:10px; /* make the corner round*/
+    color: white;
+    height: 9vh;
+}
+
+.navRight {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0052cc;
+    width: 100%;
+    float: right;
+    z-index: 0;
+    border-radius:10px; /* make the corner round*/
+    color:white;
+    height: 9vh;
+}
+
+/* Hamburger Menu */
+
+nav.menuNav {
+    width: 300px;
+    min-height: calc(100vh - 120px);
+    background-color: #317df7;
+    position: absolute;
+    top: 9vh;
+    right: 0;
+    transition: .3s all;
+    z-index: 2;
+    border-radius:5px;
+}
+nav.menuNav > a {
+    display: block;
+    padding: 5px;
+    margin: 15px 0 0px 20px;
+    color: white;
+    text-transform: uppercase;
+
+}
+
+.menuItem:hover{
+    background-color: gray;
+}
+
+/* List style */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #AC2B37;
+}
+
+li{
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+}
+
+#addReq{
+    height:9vh;
+}
+
+/* Change the link color to gray on hover */
+li a:hover {
+    background-color: gray;
+}
+
+/* Table styles */
+
+/* Table header- color and position*/
+th{
+    background-color: #8B8E81;
+
+    position: -webkit-sticky;
+    position: sticky; top: 0; /* This keeps header at the top*/
+}
+
+/* td styles */
+td{
+    height: calc(91vh/12); /* temp value for fixed height*/
+    max-width: 150px; /* temp value for max-width*/
+
+    overflow:hidden; /* Prevent long text to overflow on other cells */
+    text-overflow: ellipsis; /* Ellipsis will hide text with "..." at the end */
+    white-space: nowrap; /* Prevent cell with long text to grow vertically */
+}
+
+/* left table styles */
+.dtLeft {
+    width: 100%;
+    float: left;
+    table-layout: fixed;
+    text-align: center;
+
+    overflow-y:scroll; /* vertical scroll */
+    height: 91vh; /* necessary for scroll bar to work properly*/
+}
+
+/*width of left scroll bar*/
+.dtLeft::-webkit-scrollbar {
+    width: 10px;
+}
+/*color and background color of left scroll bar*/
+.dtLeft::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #f2f2f2;
+}
+/*making left scroll bar round shaped*/
+.dtLeft::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background:#09C9D9;
+}
+
+/* alternate color of table entries*/
+.leftTable tr:nth-child(even) td{
+    background-color:#e0858e;
+}
+
+.leftTable tr:nth-child(odd) td{
+    background-color:#DCDCDC;
+}
+
+/* Making width and height of each column stable for left table*/
+.leftTable .RideID{
+    width:10%;
+}
+
+.leftTable .From{
+    width:20%;
+}
+
+.leftTable .To{
+    width:20%;
+}
+
+.leftTable .Passengers{
+    width:10%;
+}
+
+.leftTable .Accom{
+    width: 30%; /*can be even smaller*/
+}
+
+.leftTable .Time{
+    width:10%;
+}
+
+/* right table styles */
+.dtRight {
+    width: 100%;
+    float: left;
+    table-layout: fixed;
+    text-align: center;
+
+
+    overflow-y:scroll; /* vertical scroll */
+    height:91vh; /* necessary for scroll bar to work properly*/
+}
+
+/*width of right scroll bar*/
+.dtRight::-webkit-scrollbar {
+    width: 10px;
+}
+/*color and background color of right scroll bar*/
+.dtRight::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #f2f2f2;
+}
+/*making left scroll bar round*/
+.dtRight::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background:#09C9D9;
+}
+
+/* alternate color of table entries */
+.rightTable tr:nth-child(even) td{
+    background-color:#80b3ff;
+}
+
+.rightTable tr:nth-child(odd) td{
+    background-color:#DCDCDC;
+}
+
+/* Making width and height of each column stable for right table*/
+.rightTable .RideID{
+    width:10%;
+}
+
+.rightTable .From{
+    width:20%;
+}
+
+.rightTable .To{
+    width:20%;
+}
+
+.rightTable .Passengers{
+    width:10%;
+}
+
+.rightTable .Accom{
+    width: 20%;
+}
+
+.rightTable .vanNo{
+    width: 10%;
+}
+
+.rightTable .Time{
+    width:10%;
+}
+
+
+/* Tooltip styles
+    td with tooltip will be in the class hasTooltip
+*/
+
+.hasTooltip span {
+    display: none;
+    text-decoration: none;
+    padding: 3px;
+}
+
+.hasTooltip:hover span {
+    display: block;
+    position: absolute;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    margin: 2px 10px;
+}
+
+/*set max width and white space for tooltip*/
+table span{
+    max-width: 200px;
+    white-space: normal;
+}
+

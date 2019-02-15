@@ -1,0 +1,85 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+/* START: Navbar Styles */
+.navbar {
+    background-color: #ac2b37;
+}
+nav {
+    background: #aaa;
+    box-shadow: 0px 5px 0px #80b3ff;
+}
+nav ul {
+    list-style: none;
+    text-align: left;
+
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+    font-size: larger;
+    box-sizing: border-box;
+}
+
+li a:hover {
+    background-color: gray;
+}
+
+/* END: Navbar Styles */
+
+h2 {
+    text-align: center;
+    padding-bottom: 8px;
+    margin-top:20px;
+}
+
+/* START: Table Styles */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+    background-color: #8B8E81;
+    text-align: center;
+    height:50px;
+}
+
+td {
+    text-align: center;
+    border: 1px solid #ddd;
+    height:50px;
+    padding-top: 10px;
+
+}
+
+/* alternate color of table entries*/
+table tr:nth-child(even) td{
+    background-color:#ffbbbc;
+}
+
+.idvanStatus{
+    width:10%;
+}
+
+.vanNumber{
+    width:10%;
+}
+
+.isMaintenanced{
+    width:10%;
+}
+
+.vanInfo{
+    width:70px;
+}
+
+/* END: Table Styles */

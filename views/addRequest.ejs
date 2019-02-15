@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>SNAP Dispatcher</title>
+    <link rel="icon" href="WPI_logo.png">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="addRequest.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <ul class="navbar-nav">
+        <li>
+            <a href="/index">Home</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container" style="align-content: center">
+    <h2 style="text-align: center">Request Form</h2>
+    <form action="/submitRequest" method="post">
+
+        <div class="form-group">
+            <label for="rideGoingTo">Ride Going To:</label>
+            <input id="rideGoingTo" type="text" class="form-control" name="goingTo" placeholder="Enter the destination" required maxlength="150">
+        </div>
+
+        <div class="form-group">
+            <label for="rideComingFrom">Ride Coming From:</label>
+            <input id="rideComingFrom" type="text" class="form-control" name="comingFrom" placeholder="Enter the place to pick up" required maxlength="150">
+        </div>
+
+        <div class="form-group">
+            <label for="numberOfPassengers">Number of Passengers:</label>
+            <input id="numberOfPassengers" type="number" class="form-control" min="1" max="5" name="numPassengers">
+        </div>
+
+        <label>Are Accommodations Needed?</label>
+        <div class="form-group">
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck">
+                <label class="radio-inline" for="yesCheck">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck" checked>
+                <label class="radio-inline" for="noCheck">No</label>
+            </div>
+        </div>
+        <div class="form-group" id="ifYes" style="visibility:hidden">
+            <label for="accomodations">Insert Accommodations Below:</label>
+            <input id="accomodations" type="text" class="form-control" name="accommodations">
+        </div>
+
+        <div class="form-group text-center">
+            <input type="submit" id="submit" class="btn btn-secondary btn-lg" value="Submit">
+        </div>
+    </form>
+</div>
+
+<script>
+    function yesnoCheck() {
+        if (document.getElementById('yesCheck').checked) {
+            document.getElementById('ifYes').style.visibility = 'visible';
+        }
+        else document.getElementById('ifYes').style.visibility = 'hidden';
+
+    }
+</script>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>
+

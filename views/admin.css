@@ -1,0 +1,52 @@
+/* START: Navbar Styles */
+.navbar {
+    background-color: #ac2b37;
+}
+nav {
+    background: #aaa;
+    box-shadow: 0px 5px 0px #80b3ff;
+}
+nav ul {
+    list-style: none;
+    text-align: left;
+
+}
+nav ul li {
+    display: inline-block;
+
+}
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+    font-size: larger;
+    box-sizing: border-box;
+}
+
+nav ul li a:hover {
+    background-color: gray;
+}
+
+/* END: Navbar Styles */
+
+h2 {
+    text-align: center;
+    margin-top:9vh;
+}
+
+.menuContainer{
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+}
+
+.menuItem{
+    color:black;
+}
+
+.menuItem:hover{
+    color: blue;
+}

@@ -1,0 +1,61 @@
+/****************** Form Styles **************/
+
+.form {
+    width: 800px;
+    margin: 50px auto 20px;
+}
+
+.formField {
+    width: 100%;
+    height: 60px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #34495e;
+    outline: none;
+    font: 300 28px 'Lato', sans-serif;
+    padding: 20px;
+    color: #34495e;
+}
+
+ul h3 {
+    text-align: center;
+    z-index: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #AC2B37;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+nav div div a:hover {
+    background-color: gray;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #ac2b37;
+
+}
+.navbar .navbar-brand {
+    color: #ecf0f1;
+}
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+    color: #ffbbbc;
+}

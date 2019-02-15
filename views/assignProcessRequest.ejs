@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>SNAP Dispatcher</title>
+    <link rel="icon" href="WPI_logo.png">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<nav style="background-color: #ac2b37" class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a style="color: white" class="navbar-brand" href="/index">Home</a>
+        </div>
+
+        <div style="float:right " class="navbar-header">
+            <a style="color: white" class="navbar-brand clickable-delete" data-id='/deleteProcessRequest/<%=request.idinProcessRequests %>'>Delete Request</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container" style="align-content: center">
+
+    <h2 style="text-align: center">Ride Assignment</h2>
+    <form action="/submitAssignProcessRequest" method="post">
+
+        <div class="form-group">
+            <label for="requestID">Request ID:</label>
+            <input id="requestID" type="text" class="form-control" value="<%= request.idinProcessRequests%>" name="requestID">
+        </div>
+
+        <div class="form-group">
+            <label for="rideGoingTo">Ride Going To:</label>
+            <input id="rideGoingTo" type="text" class="form-control" value="<%= request.rideTo%>" name="goingTo">
+        </div>
+
+        <div class="form-group">
+            <label for="rideComingFrom">Ride Coming From:</label>
+            <input id="rideComingFrom" type="text" class="form-control" value="<%= request.rideFrom%>" name="comingFrom">
+        </div>
+
+        <div class="form-group">
+            <label for="numberOfPassengers">Number of Passengers:</label>
+            <input id="numberOfPassengers" type="number" class="form-control" min="0" value="<%= request.numPassengers%>" name="numPassengers">
+        </div>
+
+        <div class="form-group">
+            <label for="accomodations">Any Accommodations:</label>
+            <input id="accomodations" type="text" class="form-control" value="<%= request.accommodations%>" name="accommodations">
+        </div>
+
+        <div class="form-group">
+            <label for="timeReceived">Time Received:</label>
+            <input id="timeReceived" type="text" class="form-control" value="<%= request.timeIn%>" name="timeIn">
+        </div>
+
+        <div class="form-group">
+            <label for="vanNumber">Assign Van Number:</label>
+            <input id="vanNumber" type="text" class="form-control" value="<%= request.vanNumber%>" name="vanNumber">
+        </div>
+
+        <div class="form-group text-center">
+            <input type="submit" id="submit" class="btn btn-secondary btn-lg" value="Submit">
+        </div>
+    </form>
+</div>
+
+<script>
+    jQuery(document).ready(function($) {
+        $(".clickable-delete").click(function() {
+            let newId = $(this).data("id");
+            if(newId) {
+                window.location = newId;
+            }
+
+        });
+    });
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
