@@ -1,4 +1,6 @@
 const express = require('express');
+const http = require('http');
+let path = require("path");
 const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
@@ -7,10 +9,13 @@ const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
 let mysql = require('mysql');
-let path = require("path");
 let ejs = require('ejs');
 
-require('./config/passport.js')(passport);
+var env = process.env.NODE_ENV || 'development';
+const config = require('./config/config')[env];
+
+require('./config/passport.js')(passport, config);
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -50,7 +55,7 @@ app.use(passport.session());
 app.use(flash());
 
 //Define express js config
-require('./config/routes.js')(app, passport);
+require('./config/routes.js')(app, config, passport);
 
 // Listen for the server to start
 app.listen(port, function () {

@@ -1,6 +1,5 @@
-// Local Passport Login
 let LocalStrategy = require('passport-local').Strategy;
-
+let SamlStrategy = require('passport-saml').Strategy;
 let mysql = require('mysql');
 
 let connection = mysql.createConnection({
@@ -12,7 +11,7 @@ let connection = mysql.createConnection({
 });
 
 // expose this function to our app using module.exports
-module.exports = function(passport) {
+module.exports = function(passport, config) {
 
     // =========================================================================
     // passport session setup ==================================================
@@ -94,9 +93,9 @@ module.exports = function(passport) {
         function(req, username, password, done) { // callback with email and password from our form
 
             let loginStatement = "SELECT * FROM superUsers WHERE username = ?";
-            let loginObj = [req.body.username];
+            let loginUsername = [req.body.username];
 
-            connection.query(loginStatement, loginObj, function(err,rows){
+            connection.query(loginStatement, loginUsername, function(err,rows){
                 if (err)
                     return done(err);
                 if (!rows.length) {
@@ -108,8 +107,29 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 
                 // all is well, return successful user
-                console.log("Rows = " + rows[0]);
                 return done(null, rows[0]);
             });
         }));
+
+    ////////////////////////////////////////////////////////////
+    // SAML Logins
+    ////////////////////////////////////////////////////////////
+    passport.use(new SamlStrategy(
+        {
+            path: config.passport.saml.path,
+            entryPoint: config.passport.saml.entryPoint,
+            issuer: config.passport.saml.issuer,
+        },
+        function (profile, done) {
+            // TODO: Find out what is returned here from WPI
+            return done(null,
+                {
+                    id: profile.uid,
+                    email: profile.email,
+                    displayName: profile.cn,
+                    firstName: profile.givenName,
+                    lastName: profile.sn
+                });
+        })
+    );
 };

@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 const moment = require('moment');
 
-module.exports = function (app, passport) {
+module.exports = function (app, config, passport) {
 
     ////////////////////////////////////////////////////////////////////
-    // WPI SAML Login for students & dispatchers
+    // WPI Students
     ////////////////////////////////////////////////////////////////////
 
     // Direct to the home page
@@ -47,24 +47,6 @@ module.exports = function (app, passport) {
         res.render('policy.ejs', {});
     });
 
-    ////////////////////////////////////////////////////////////////////
-    // Local Login for Super User
-    ////////////////////////////////////////////////////////////////////
-    app.get('/superLogin', function (req, res) {
-        res.render('index.ejs', {});
-    });
-
-    //Process login form
-    app.post('/submitSuperLogin', passport.authenticate('local-login',{
-        successRedirect : '/superHome',
-        failureRedirect : '/superLogin',
-        failureFlash : true
-    }));
-
-    app.get('/superHome', function (req, res) {
-        res.render('signUp.ejs', {});
-    });
-
     // Adds the SNAP Ride Request newRequest to the AWS MySQL DB
     app.post('/submitRequest', function (req, res) {
         // Connect to the dispatcher database
@@ -94,4 +76,30 @@ module.exports = function (app, passport) {
             res.redirect('/index');
         });
     });
+
+    ////////////////////////////////////////////////////////////////////
+    // WPI Dispatchers
+    ////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////
+    // Local Login for Super User
+    ////////////////////////////////////////////////////////////////////
+    app.get('/superLogin', function (req, res) {
+        res.render('index.ejs', {});
+    });
+
+    //Process superUser login form
+    app.post('/submitSuperLogin', passport.authenticate('local-login',{
+        successRedirect : '/superHome',
+        failureRedirect : '/superLogin',
+        failureFlash : true
+    }));
+
+    //TODO: Create Admin dashboard
+    app.get('/superHome', function (req, res) {
+        res.render('signUp.ejs', {});
+    });
+
+
 };
