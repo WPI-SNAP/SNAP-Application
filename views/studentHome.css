@@ -9,6 +9,10 @@ body {
     background: #fafafa;
 }
 
+label {
+    margin-right: 0.85rem;
+}
+
 /*
     Shuttle Styles
  */
@@ -91,9 +95,9 @@ ul ul a {
 }
 
 .wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
+    display: flex !important;
+    width: 100% !important;
+    align-items: stretch !important;
 }
 
 #sidebar.active {
@@ -191,4 +195,8 @@ ol > li:before {
 
 .form-check-input {
     margin-left: 4px !important;
+}
+
+#content {
+    width: 100%;
 }

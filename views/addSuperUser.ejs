@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>SNAP Student</title>
+    <title>SNAP Admin</title>
     <link rel="icon" href="WPI_logo.png">
 
     <!-- Bootstrap CSS CDN -->
@@ -30,16 +30,16 @@
 
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="/">Home</a>
+                <a href="/superHome">Home</a>
             </li>
             <li>
-                <a href="/shuttleInfo">Shuttles</a>
+                <a href="/addSuperUser">Add an Admin</a>
             </li>
             <li>
-                <a href="/policy">Policy</a>
+                <a href="#">Add a dispatcher</a>
             </li>
             <li>
-                <a href="tel:7817334418">Contact SNAP</a>
+                <a href="#">Send Notification</a>
             </li>
         </ul>
 
@@ -63,44 +63,8 @@
 
         <!-- Request Ride Form -->
         <div class="container-fluid">
-            <h4  style="text-align: center !important">Request Form</h4>
-            <form action="/submitRequest" method="post">
+            <h3  style="text-align: center !important">Add an Admin</h3>
 
-                <div class="form-group">
-                    <label style="float: left">To:</label>
-                    <input type="text" class="form-control" name="goingTo">
-                </div>
-
-                <div class="form-group">
-                    <label>From:</label>
-                    <input type="text" class="form-control" name="comingFrom">
-                </div>
-
-                <div class="form-group">
-                    <label>No. Passengers:</label>
-                    <input type="number" class="form-control" min="0" max="5" name="numPassengers">
-                </div>
-
-                <label>Are Accommodations Needed?</label>
-                <div class="form-group form-check-inline" style="text-align: center !important">
-                    <label class="radio-inline" for="yesCheck">
-                        <input type="radio" class="btn-space form-check-input" onclick="javascript:yesnoCheck();" name="yesno"
-                               id="yesCheck">Yes
-                    </label>
-                    <label class="radio-inline" for="noCheck">
-                        <input type="radio" class="btn-space form-check-input" onclick="javascript:yesnoCheck();" name="yesno"
-                               id="noCheck" checked>No
-                    </label>
-                </div>
-                <div class="form-group" id="ifYes" style="visibility:hidden">
-
-                    <input type="text" class="form-control" name="accommodations" value="Insert Accommodations...">
-                </div>
-
-                <div class="form-group text-center">
-                    <input type="submit" id="submit" class="btn btn-secondary btn-lg" value="Submit">
-                </div>
-            </form>
 
         </div>
 
@@ -123,15 +87,6 @@
         });
 
     });
-</script>
-
-<script>
-    function yesnoCheck() {
-        if (document.getElementById('yesCheck').checked) {
-            document.getElementById('ifYes').style.visibility = 'visible';
-        }
-        else document.getElementById('ifYes').style.visibility = 'hidden';
-    }
 </script>
 
 </body>
