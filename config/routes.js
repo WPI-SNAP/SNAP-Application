@@ -95,53 +95,56 @@ module.exports = function (app, config, passport) {
 
     //TODO: Create Admin dashboard
     app.get('/superHome', function (req, res) {
-        res.render('superDashboard.ejs', {});
+        if(!req.isAuthenticated()) res.redirect('/');
+        else {
+            res.render('superDashboard.ejs', {});
+        }
     });
 
-    // Direct to the home page
-    app.get('/signUp', function (req, res) {
-        res.render('signUp.ejs', {});
-    });
-
-    // Direct to the home page
+    // Brings them to the admin sign up form
     app.get('/addSuperUser', function (req, res) {
-        res.render('signUp.ejs', {});
+        if(!req.isAuthenticated()) res.redirect('/');
+        else {
+            res.render('signUp.ejs', {});
+        }
     });
 
 
     // Adds the SNAP Ride Request newRequest to the AWS MySQL DB
     app.post('/submitSuperUser', function (req, res) {
+        if(!req.isAuthenticated()) res.redirect('/');
+        else {
+            if (req.body.password1 !== req.body.password2) {
+                throw "Passwords are not matching."
+            } else {
 
-        if (req.body.password1 !== req.body.password2) {
-            throw "Passwords are not matching."
-        } else {
-
-            // Connect to the dispatcher database
-            let dispatcherDB = mysql.createConnection({
-                host: 'snapdispatcherdb.ca40maoxylrp.us-east-1.rds.amazonaws.com',
-                port: '3306',
-                user: 'masterAdmin',
-                password: 'Pa55word',
-                database: 'snapDB'
-            });
-
-            // Prepared statement to insert into newrequests table
-            let addSuperstmt = 'INSERT INTO superUsers(username, password) VALUES (?, ?)';
-            bcrypt.hash(req.body.password1, saltRounds).then(function(hash) {
-                // Store hash in your password DB.
-                let newSuperRequest = [req.body.firstName, req.body.lastName, req.body.emailAddress, hash];
-
-                // Execute the insert statement
-                dispatcherDB.query(addSuperstmt, newSuperRequest, (err, results, fields) => {
-                    if (err) {
-                        return console.error(err.message);
-                    }
-                    dispatcherDB.end();
-                    // Sends the user back to the home page
-                    res.redirect('/superHome');
+                // Connect to the dispatcher database
+                let dispatcherDB = mysql.createConnection({
+                    host: 'snapdispatcherdb.ca40maoxylrp.us-east-1.rds.amazonaws.com',
+                    port: '3306',
+                    user: 'masterAdmin',
+                    password: 'Pa55word',
+                    database: 'snapDB'
                 });
 
-            });
+                // Prepared statement to insert into newrequests table
+                let addSuperstmt = 'INSERT INTO superUsers(username, password) VALUES (?, ?)';
+                bcrypt.hash(req.body.password1, saltRounds).then(function (hash) {
+                    // Store hash in your password DB.
+                    let newSuperRequest = [req.body.username, hash];
+
+                    // Execute the insert statement
+                    dispatcherDB.query(addSuperstmt, newSuperRequest, (err, results, fields) => {
+                        if (err) {
+                            return console.error(err.message);
+                        }
+                        dispatcherDB.end();
+                        // Sends the user back to the home page
+                        res.redirect('/superHome');
+                    });
+
+                });
+            }
         }
     });
 
