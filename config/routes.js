@@ -720,11 +720,11 @@ module.exports = function (app, config, passport) {
                         if (err) {
                             return console.error(err.message);
                         }
-                        dispatcherDB.end();
+
                         // Sends the user back to the home page
                         res.redirect('/superHome');
                     });
-
+                    dispatcherDB.end();
                 });
             }
         }

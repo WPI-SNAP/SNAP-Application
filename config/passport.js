@@ -92,7 +92,6 @@ module.exports = function (passport, config) {
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function (req, username, password, done) { // callback with email and password from our form
-            // TODO: Add bcrypt compare her
 
             let loginStatement = "SELECT * FROM superUsers WHERE username = ?";
             let loginInfo = [req.body.username];
@@ -102,9 +101,7 @@ module.exports = function (passport, config) {
                 if (!rows.length) {
                     return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
                 }
-                console.log(req.body.password);
-                console.log(rows[0].password);
-                bcrypt.compare(req.body.password, rows[0].password, function (err, res) {
+                bcrypt.compare(req.body.password.toString(), rows[0].password.toString(), function (err, res) {
                     if(err) {
                         console.log(err);
                     }
