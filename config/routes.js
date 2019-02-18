@@ -685,13 +685,6 @@ module.exports = function (app, config, passport) {
         }
     });
 
-    // Brings them to the admin sign up form
-    app.get('/signUp', function (req, res) {
-        res.render('signUp.ejs', {});
-
-    });
-
-
     // Adds the SNAP Ride Request newRequest to the AWS MySQL DB
     app.post('/submitSuperUser', function (req, res) {
         if(!req.isAuthenticated()) res.redirect('/superLogin');
@@ -720,11 +713,11 @@ module.exports = function (app, config, passport) {
                         if (err) {
                             return console.error(err.message);
                         }
-
+                        dispatcherDB.end();
                         // Sends the user back to the home page
                         res.redirect('/superHome');
                     });
-                    dispatcherDB.end();
+
                 });
             }
         }
