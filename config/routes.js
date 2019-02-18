@@ -685,6 +685,12 @@ module.exports = function (app, config, passport) {
         }
     });
 
+    // Brings them to the admin sign up form
+    app.get('/signUp', function (req, res) {
+        res.render('signUp.ejs', {});
+
+    });
+
 
     // Adds the SNAP Ride Request newRequest to the AWS MySQL DB
     app.post('/submitSuperUser', function (req, res) {

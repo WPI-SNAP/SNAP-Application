@@ -92,22 +92,32 @@ module.exports = function (passport, config) {
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function (req, username, password, done) { // callback with email and password from our form
-            // TODO: Add bcrypt compare here
-            let loginStatement = "SELECT * FROM superUsers WHERE username = ? AND password = ?";
-            let loginInfo = [req.body.username, req.body.password];
+            // TODO: Add bcrypt compare her
+
+            let loginStatement = "SELECT * FROM superUsers WHERE username = ?";
+            let loginInfo = [req.body.username];
             connection.query(loginStatement, loginInfo, function (err, rows) {
                 if (err)
                     return done(err);
                 if (!rows.length) {
                     return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
                 }
+                console.log(req.body.password);
+                console.log(rows[0].password);
+                bcrypt.compare(req.body.password, rows[0].password, function (err, res) {
+                    if(err) {
+                        console.log(err);
+                    }
+                    // all is well, return successful user
+                    console.log(res);
+                    if (res === true) {
+                        return done(null, rows[0]);
+                    }
+                    else {
+                        return done(null, false, req.flash('loginMessage', 'Invalid username or password'));
+                    }
+                });
 
-                // if the user is found but the password is wrong
-                if (!(rows[0].password === password))
-                    return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
-
-                // all is well, return successful user
-                return done(null, rows[0]);
             });
 
         }));
