@@ -8,48 +8,45 @@
     <title>SNAP Dispatcher</title>
     <link rel="icon" href="WPI_logo.png">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="maintenance.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="addRequest.css">
 </head>
-
 <body>
 
 <!-- Navigation Bar -->
 <nav class="navbar">
     <ul class="navbar-nav">
         <li>
-            <a href="/index">Home</a>
+            <a href="/dispatcher">Home</a>
         </li>
     </ul>
 </nav>
 
 <div class="container" style="align-content: center">
+    <h2 style="text-align: center">Van Maintenance</h2>
 
-    <h2><b>Van in Maintenance</b></h2>
-    <!-- Archive Table -->
-    <div>
-        <table>
-            <tr>
-                <th class="idvanStatus">ID</th>
-                <th class="vanNumber">Van Number</th>
-                <th class="vanInfo">Information</th>
-            </tr>
+    <form>
+        <div class="form-group">
+            <label>Van Number</label>
+            <input type="text" class="form-control" name="vanNum">
+        </div>
 
-            <% maintenanceRows.forEach(function (row) { %>
-                <tr>
-                    <td ><%= row.idvanStatus %></td>
-                    <td ><%= row.vanNumber %></td>
-                    <td ><%= row.vanInfo %></td>
-                </tr>
-            <% }); %>
+        <div class="form-group">
+            <label>Reason of Maintenance</label>
+            <input type="text" class="form-control" name="reason">
+        </div>
 
-        </table>
-    </div>
+        <div class="form-group text-center">
+            <input type="submit" id="submit" class="btn btn-secondary btn-lg" value="Submit">
+        </div>
 
+    </form>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -61,4 +58,5 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

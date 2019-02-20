@@ -12,39 +12,45 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="vanStatus.css">
+    <link rel="stylesheet" href="dispatcher/archive.css">
 </head>
-
 <body>
+
 
 <!-- Navigation Bar -->
 <nav class="navbar">
     <ul class="navbar-nav">
         <li>
-            <a href="/index">Home</a>
+            <a href="/dispatcher">Home</a>
         </li>
     </ul>
 </nav>
 
 <div class="container" style="align-content: center">
 
-    <h2><b>Van in Maintenance</b></h2>
+    <h2><b>Ride Request Archive</b></h2>
     <!-- Archive Table -->
     <div>
         <table>
             <tr>
-                <th class="idvanStatus">ID</th>
-                <th class="vanNumber">Van Number</th>
-                <th class="isMaintenanced">isMaintenanced</th>
-                <th class="vanInfo">Information</th>
+                <th class="archiveID">Ride ID</th>
+                <th class="archiveFrom">From</th>
+                <th class="archiveTo">To</th>
+                <th class="archivePassengers">No. Passengers</th>
+                <th class="archiveAccom">Accommodations</th>
+                <th class="archiveVanNo">Van No.</th>
+                <th class="archiveTime">Time Received</th>
             </tr>
 
-            <% vanStatusRows.forEach(function (row) { %>
+            <% archivedRequestRows.forEach(function (row) { %>
                 <tr>
-                    <td ><%= row.idvanStatus %></td>
-                    <td ><%= row.vanNumber %></td>
-                    <td> <%= row.isMaintenanced%></td>
-                    <td ><%= row.vanInfo %></td>
+                    <td class="archiveID"><%= row.idarchivedRequests %></td>
+                    <td class="archiveFrom"><%= row.rideFrom %></td>
+                    <td class="archiveTo"><%= row.rideTo %></td>
+                    <td class="archivePassengers"><%= row.numPassengers %></td>
+                    <td class="archiveAccom"><%= row.accommodations %></td>
+                    <td class="archiveVanNo"><%= row.vanNumber %></td>
+                    <td class="archiveTime"><%= row.timeIn.slice(4, 21) %></td>
                 </tr>
             <% }); %>
 

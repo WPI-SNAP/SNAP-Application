@@ -32,6 +32,7 @@
     "passport-local": "^1.0.0",
     "passport-saml": "^1.0.0",
     "passport-saml-metadata": "^1.6.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "xmlhttprequest": "^1.8.0"
   }
 }

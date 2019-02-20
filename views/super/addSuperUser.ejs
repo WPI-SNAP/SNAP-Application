@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>SNAP Student</title>
+    <title>SNAP Admin</title>
     <link rel="icon" href="WPI_logo.png">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="studentHome.css">
+    <link rel="stylesheet" href="../student/studentHome.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -29,17 +29,17 @@
         </div>
 
         <ul class="list-unstyled components">
-            <li>
-                <a href="/">Home</a>
-            </li>
             <li class="active">
-                <a href="/shuttleInfo">Shuttles</a>
+                <a href="/superHome">Home</a>
             </li>
             <li>
-                <a href="/policy">Policy</a>
+                <a href="/addSuperUser">Add an Admin</a>
             </li>
             <li>
-                <a href="tel:7817334418">Contact SNAP</a>
+                <a href="#">Add a dispatcher</a>
+            </li>
+            <li>
+                <a href="#">Send Notification</a>
             </li>
         </ul>
 
@@ -48,7 +48,7 @@
         </div>
     </nav>
 
-    <!-- Menu Button -->
+    <!-- Page Content -->
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -61,29 +61,11 @@
             </div>
         </nav>
 
-        <!-- Shuttle Info -->
-        <div class="container">
-            <h3>Gateway Shuttle Hours:</h3>
-            <h5 style="text-decoration: underline">C Term: </h5>
-            <div>
-                <p class="shuttle-hours">Monday: 7:30AM - 5:30 PM</p>
-            </div>
-            <div>
-                <p class="shuttle-hours">Tuesday: 7:30AM - 5:30 PM</p>
-            </div>
-            <div>
-                <p class="shuttle-hours">Wednesday: 7:30AM - 5:30 PM</p>
-            </div>
-            <div>
-                <p class="shuttle-hours">Thursday: 7:30AM - 5:30 PM</p>
-            </div>
-            <div>
-                <p class="shuttle-hours">Friday: 7:30AM - 5:30 PM</p>
-            </div>
-            <div>
-                <p class="shuttle-desc">These are the hours for the gateway shuttle. For more information on the Gateway shuttle service,
-                follow this link: <a id="shuttle-link" href="http://www.wpi.edu/student-experience/resources/safety/campus-transportation/gateway-shuttle">Gateway Shuttle</a></p>
-            </div>
+        <!-- Request Ride Form -->
+        <div class="container-fluid">
+            <h3  style="text-align: center !important">Add an Admin</h3>
+
+
         </div>
 
     </div>
@@ -105,15 +87,6 @@
         });
 
     });
-</script>
-
-<script>
-    function yesnoCheck() {
-        if (document.getElementById('yesCheck').checked) {
-            document.getElementById('ifYes').style.visibility = 'visible';
-        }
-        else document.getElementById('ifYes').style.visibility = 'hidden';
-    }
 </script>
 
 </body>

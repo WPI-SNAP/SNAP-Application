@@ -1,7 +1,11 @@
 const mysql = require('mysql');
 const moment = require('moment');
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const http = require('http');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+
+let greatestRideId = 48;
 
 module.exports = function (app, config, passport) {
 
@@ -24,17 +28,17 @@ module.exports = function (app, config, passport) {
                 });
         }
         */
-        res.render('studentHome.ejs', {});
+        res.render('student/studentHome.ejs', {});
     });
 
     // Direct to the Gateway Shuttle Info page
     app.get('/shuttleInfo', function (req, res) {
-        res.render('shuttleInfo.ejs', {});
+        res.render('student/shuttleInfo.ejs', {});
     });
 
     // Direct to the SNAP Policy Page
     app.get('/policy', function (req, res) {
-        res.render('policy.ejs', {});
+        res.render('student/policy.ejs', {});
     });
 
     // Adds the SNAP Ride Request newRequest to the AWS MySQL DB
@@ -64,7 +68,11 @@ module.exports = function (app, config, passport) {
                 return console.error(err.message);
             }
             dispatcherDB.end();
+
             // Sends the user back to the home page
+            greatestRideId = fields;
+            greatestRideId++;
+            console.log("Greatest rideId = " + greatestRideId);
             res.redirect('/');
         });
     });
@@ -126,7 +134,7 @@ module.exports = function (app, config, passport) {
                         }
                         dispatcherDB.end();
 
-                        res.render('index.ejs', {
+                        res.render('dispatcher/index.ejs', {
                             newRequestRows: allNewRequests,
                             inProcessRows: allProcessRequests
                         });
@@ -138,12 +146,12 @@ module.exports = function (app, config, passport) {
 
     // Displays AddRequest Page
     app.get('/addRequest', function (req, res) {
-        res.render('addRequest.ejs');
+        res.render('dispatcher/addRequest.ejs');
     });
 
     // Displays Admin Page
     app.get('/admin', function (req, res) {
-        res.render('admin.ejs');
+        res.render('dispatcher/admin.ejs');
     });
 
     // Adds the newRequest to the AWS MySQL DB
@@ -170,6 +178,10 @@ module.exports = function (app, config, passport) {
             // Retrieve inserted id
             console.log("Going to: " + req.body.goingTo);
             dispatcherDB.end();
+
+            greatestRideId = results.insertId;
+            console.log("Greatest rideId = " + greatestRideId);
+
             // Sends the user back to the home page
             res.redirect('/dispatcher');
         });
@@ -222,7 +234,7 @@ module.exports = function (app, config, passport) {
                     };
                 }
                 dispatcherDB.end();
-                res.render('assignNewRequest.ejs', {
+                res.render('dispatcher/assignNewRequest.ejs', {
                     request: allRequests
                 });
             }
@@ -314,7 +326,7 @@ module.exports = function (app, config, passport) {
                     };
                 }
                 dispatcherDB.end();
-                res.render('deleteNewRequest.ejs', {
+                res.render('dispatcher/deleteNewRequest.ejs', {
                     request: allRequests
                 });
             }
@@ -410,7 +422,7 @@ module.exports = function (app, config, passport) {
                     };
                 }
                 dispatcherDB.end();
-                res.render('assignProcessRequest.ejs', {
+                res.render('dispatcher/assignProcessRequest.ejs', {
                     request: allRequests
                 });
             }
@@ -498,7 +510,7 @@ module.exports = function (app, config, passport) {
                     };
                 }
                 dispatcherDB.end();
-                res.render('deleteProcessRequest.ejs', {
+                res.render('dispatcher/deleteProcessRequest.ejs', {
                     request: allRequests
                 });
             }
@@ -567,7 +579,7 @@ module.exports = function (app, config, passport) {
                 }
                 dispatcherDB.end();
 
-                res.render('maintenance.ejs', {
+                res.render('dispatcher/maintenance.ejs', {
                     maintenanceRows: allMaintenance
                 });
             }
@@ -609,7 +621,7 @@ module.exports = function (app, config, passport) {
                 }
                 dispatcherDB.end();
 
-                res.render('vanStatus.ejs', {
+                res.render('dispatcher/vanStatus.ejs', {
                     vanStatusRows: allVanStatus
                 });
             }
@@ -649,7 +661,7 @@ module.exports = function (app, config, passport) {
                 }
                 dispatcherDB.end();
 
-                res.render('archive.ejs', {
+                res.render('dispatcher/archive.ejs', {
                     archivedRequestRows: allArchivedRequests
                 });
             }
@@ -660,7 +672,7 @@ module.exports = function (app, config, passport) {
     // Local Login for Super User
     ////////////////////////////////////////////////////////////////////
     app.get('/superLogin', function (req, res) {
-        res.render('superLogin.ejs', {});
+        res.render('super/superLogin.ejs', {});
     });
 
     //Process superUser login form
@@ -673,7 +685,7 @@ module.exports = function (app, config, passport) {
     app.get('/superHome', function (req, res) {
         if(!req.isAuthenticated()) res.redirect('/superLogin');
         else {
-            res.render('superDashboard.ejs', {});
+            res.render('super/superDashboard.ejs', {});
         }
     });
 
@@ -681,7 +693,7 @@ module.exports = function (app, config, passport) {
     app.get('/addSuperUser', function (req, res) {
         if(!req.isAuthenticated()) res.redirect('/superLogin');
         else {
-            res.render('signUp.ejs', {});
+            res.render('super/signUp.ejs', {});
         }
     });
 
@@ -713,6 +725,7 @@ module.exports = function (app, config, passport) {
                         if (err) {
                             return console.error(err.message);
                         }
+                        console.log(results.insertId);
                         dispatcherDB.end();
                         // Sends the user back to the home page
                         res.redirect('/superHome');
@@ -722,5 +735,4 @@ module.exports = function (app, config, passport) {
             }
         }
     });
-
 };

@@ -13,7 +13,7 @@ html,body{
 }
 
 /* Left side*/
-.leftSplit{
+#leftSplit{
     left: 0; /* placed at the left end */
 }
 
@@ -133,7 +133,7 @@ td{
 }
 
 /* left table styles */
-.dtLeft {
+#dtLeft {
     width: 100%;
     float: left;
     table-layout: fixed;
@@ -144,51 +144,51 @@ td{
 }
 
 /*width of left scroll bar*/
-.dtLeft::-webkit-scrollbar {
+#dtLeft::-webkit-scrollbar {
     width: 10px;
 }
 /*color and background color of left scroll bar*/
-.dtLeft::-webkit-scrollbar-track {
+#dtLeft::-webkit-scrollbar-track {
     border-radius: 10px;
     background: #f2f2f2;
 }
 /*making left scroll bar round shaped*/
-.dtLeft::-webkit-scrollbar-thumb {
+#dtLeft::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background:#09C9D9;
 }
 
 /* alternate color of table entries*/
-.leftTable tr:nth-child(even) td{
+#leftTable tr:nth-child(even) td{
     background-color:#e0858e;
 }
 
-.leftTable tr:nth-child(odd) td{
+#leftTable tr:nth-child(odd) td{
     background-color:#DCDCDC;
 }
 
 /* Making width and height of each column stable for left table*/
-.leftTable .RideID{
+#leftTable .RideID{
     width:10%;
 }
 
-.leftTable .From{
+#leftTable .From{
     width:20%;
 }
 
-.leftTable .To{
+#leftTable .To{
     width:20%;
 }
 
-.leftTable .Passengers{
+#leftTable .Passengers{
     width:10%;
 }
 
-.leftTable .Accom{
+#leftTable .Accom{
     width: 30%; /*can be even smaller*/
 }
 
-.leftTable .Time{
+#leftTable .Time{
     width:10%;
 }
 

@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>SNAP Admin</title>
+    <title>SNAP Student</title>
     <link rel="icon" href="WPI_logo.png">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="studentHome.css">
+    <link rel="stylesheet" href="student/studentHome.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -29,17 +29,17 @@
         </div>
 
         <ul class="list-unstyled components">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/shuttleInfo">Shuttles</a>
+            </li>
             <li class="active">
-                <a href="/superHome">Home</a>
+                <a href="/policy">Policy</a>
             </li>
             <li>
-                <a href="/addSuperUser">Add an Admin</a>
-            </li>
-            <li>
-                <a href="#">Add a dispatcher</a>
-            </li>
-            <li>
-                <a href="#">Send Notification</a>
+                <a href="tel:7817334418">Contact SNAP</a>
             </li>
         </ul>
 
@@ -48,7 +48,7 @@
         </div>
     </nav>
 
-    <!-- Page Content -->
+    <!-- Menu Button -->
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -61,10 +61,27 @@
             </div>
         </nav>
 
-        <!-- Request Ride Form -->
-        <div class="container-fluid">
-            <h3  style="text-align: center !important">Admin Dashboard</h3>
+        <!-- Shuttle Info -->
+        <div class="container">
+            <h3 id="policy-header">SNAP Policy:</h3>
 
+            <ol>
+                <li class="policy-list"> Transports must fall under a limit of a one mile radius.</li>
+                <li class="policy-list"> Transports will be provided from off-campus housing, to campus and from campus, to off-campus housing.</li>
+                <li class="policy-list"> Transports will be provided when on campus to anywhere else on campus.</li>
+                <li class="policy-list"> A and D term a SNAP transport can be to or from Price Chopper all days of the week besides
+                    Friday and Saturday from 6pm onward. For B and C term a SNAP transport can be to or from
+                    Price Chopper all days of the week besides Friday and Saturday from 4pm onward.</li>
+                <li class="policy-list"> Transports are not used for rides to shopping centers, restaurants, bars, or any other commercial
+                    locations.</li>
+                <li class="policy-list"> Transports may be provided to WPI students traveling to and from Union Station for traveling
+                    purposes only, we advise that you give a 45 minute warning so that dispatch can fit this in their
+                    schedule. </li>
+                <li class="policy-list"> Transports are not allowed by law to transport any forms of drugs or alcohol. SNAP drivers are
+                    authorized to view any enclosed packages and /or containers.</li>
+                <li class="policy-list"> You must have a VALID WPI ID and be an active member of the WPI community to utilize
+                    SNAP services.</li>
+            </ol>
 
         </div>
 
@@ -87,6 +104,15 @@
         });
 
     });
+</script>
+
+<script>
+    function yesnoCheck() {
+        if (document.getElementById('yesCheck').checked) {
+            document.getElementById('ifYes').style.visibility = 'visible';
+        }
+        else document.getElementById('ifYes').style.visibility = 'hidden';
+    }
 </script>
 
 </body>

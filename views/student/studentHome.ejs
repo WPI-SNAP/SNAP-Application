@@ -5,14 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>SNAP Admin</title>
+    <title>SNAP Student</title>
     <link rel="icon" href="WPI_logo.png">
 
+    <!-- JQuery 3 -->
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="studentHome.css">
+    <link rel="stylesheet" href="student/studentHome.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -30,16 +34,16 @@
 
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="/superHome">Home</a>
+                <a href="/">Home</a>
             </li>
             <li>
-                <a href="/addSuperUser">Add an Admin</a>
+                <a href="/shuttleInfo">Shuttles</a>
             </li>
             <li>
-                <a href="#">Add a dispatcher</a>
+                <a href="/policy">Policy</a>
             </li>
             <li>
-                <a href="#">Send Notification</a>
+                <a href="tel:7817334418">Contact SNAP</a>
             </li>
         </ul>
 
@@ -63,8 +67,44 @@
 
         <!-- Request Ride Form -->
         <div class="container-fluid">
-            <h3  style="text-align: center !important">Add an Admin</h3>
+            <h4  style="text-align: center !important">Request Form</h4>
+            <form action="/studentSubmitRequest" method="post">
 
+                <div class="form-group">
+                    <label style="float: left">To:</label>
+                    <input type="text" id="studentReqTo" class="form-control" name="goingTo">
+                </div>
+
+                <div class="form-group">
+                    <label>From:</label>
+                    <input type="text" id="studentReqFrom" class="form-control" name="comingFrom">
+                </div>
+
+                <div class="form-group">
+                    <label>No. Passengers:</label>
+                    <input type="number" id="studentNumPass" class="form-control" min="0" max="5" name="numPassengers">
+                </div>
+
+                <label>Are Accommodations Needed?</label>
+                <div class="form-group form-check-inline" style="text-align: center !important">
+                    <label class="radio-inline" for="yesCheck">
+                        <input type="radio" class="btn-space form-check-input" onclick="javascript:yesnoCheck();" name="yesno"
+                               id="yesCheck">Yes
+                    </label>
+                    <label class="radio-inline" for="noCheck">
+                        <input type="radio" class="btn-space form-check-input" onclick="javascript:yesnoCheck();" name="yesno"
+                               id="noCheck" checked>No
+                    </label>
+                </div>
+                <div class="form-group" id="ifYes" style="visibility:hidden">
+
+                    <input type="text" id="studentAccomm" class="form-control" name="accommodations" value="Insert Accommodations...">
+                </div>
+
+                <div class="form-group text-center">
+                    <input type="submit" id="studentSubmit" class="btn btn-secondary btn-lg" value="Submit">
+                </div>
+            </form>
 
         </div>
 
@@ -87,6 +127,15 @@
         });
 
     });
+</script>
+
+<script>
+    function yesnoCheck() {
+        if (document.getElementById('yesCheck').checked) {
+            document.getElementById('ifYes').style.visibility = 'visible';
+        }
+        else document.getElementById('ifYes').style.visibility = 'hidden';
+    }
 </script>
 
 </body>

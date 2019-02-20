@@ -8,31 +8,29 @@
     <title>SNAP Dispatcher</title>
     <link rel="icon" href="WPI_logo.png">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assignNewRequest.css">
 </head>
-
 <body>
 
 <nav style="background-color: #ac2b37" class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" style="color: white; " href="/index">Home</a>
+            <a style="color: white" class="navbar-brand" href="/dispatcher">Home</a>
         </div>
 
-        <div style="float:right " class="navbar-header">
-            <a style="color: white" class="navbar-brand clickable-delete" data-id='/deleteNewRequest/<%=request.idnewRequests %>'>Delete Request</a>
+        <div style="float:right" class="navbar-header">
+            <a style="color: white" class="navbar-brand clickable-modify" data-id='/assignNewRequest/<%=request.idnewRequests %>'>Assign Request</a>
         </div>
     </div>
 </nav>
 
 <div class="container" style="align-content: center">
 
-    <h2 style="text-align: center">Ride Assignment</h2>
-    <form action="/submitAssignNewRequest" method="post">
+    <h2 style="text-align: center">Delete Ride Request</h2>
+    <form action="/submitDeleteNewRequest" method="post">
 
         <div class="form-group">
             <label for="requestID">Request ID:</label>
@@ -64,29 +62,15 @@
             <input id="timeReceived" type="text" class="form-control" value="<%= request.timeIn%>" name="timeIn">
         </div>
 
-        <div class="form-group">
-            <fieldset>
-                <legend style="font-size: 16px">Assign Van Number:</legend>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="vanNumber" id="vanNumber1" value="1">
-                        <label class="form-check-label" for="vanNumber1">1</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="vanNumber" id="vanNumber2" value="2" required>
-                        <label class="form-check-label" for="vanNumber2">2</label>
-                    </div>
-            </fieldset>
-        </div>
-
         <div class="form-group text-center">
-            <input type="submit" id="submit" class="btn btn-secondary btn-lg" value="Submit">
+            <input type="submit" id="submit" class="btn btn-secondary btn-lg btn-danger" value="Delete Request">
         </div>
     </form>
 </div>
 
 <script>
     jQuery(document).ready(function($) {
-        $(".clickable-delete").click(function() {
+        $(".clickable-modify").click(function() {
             let newId = $(this).data("id");
             if(newId) {
                 window.location = newId;
@@ -94,7 +78,6 @@
         });
     });
 </script>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

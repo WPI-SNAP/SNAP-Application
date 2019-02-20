@@ -18,23 +18,22 @@
 <nav style="background-color: #ac2b37" class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a style="color: white" class="navbar-brand" href="/index">Home</a>
+            <a style="color: white" class="navbar-brand" href="/dispatcher">Home</a>
         </div>
 
         <div style="float:right" class="navbar-header">
-            <a style="color: white" class="navbar-brand clickable-modify" data-id='/assignNewRequest/<%=request.idnewRequests %>'>Assign Request</a>
+            <a style="color: white" class="navbar-brand clickable-modify" data-id='/assignProcessRequest/<%=request.idinProcessRequests %>'>Assign Request</a>
         </div>
     </div>
 </nav>
 
 <div class="container" style="align-content: center">
-
     <h2 style="text-align: center">Delete Ride Request</h2>
-    <form action="/submitDeleteNewRequest" method="post">
+    <form action="/submitDeleteProcessRequest" method="post">
 
         <div class="form-group">
-            <label for="requestID">Request ID:</label>
-            <input id="requestID" type="text" class="form-control" value="<%= request.idnewRequests%>" name="requestID">
+            <label for="requstID">Request ID:</label>
+            <input id="requstID" type="text" class="form-control" value="<%= request.idinProcessRequests%>" name="requestID">
         </div>
 
         <div class="form-group">
@@ -49,7 +48,7 @@
 
         <div class="form-group">
             <label for="numberOfPassengers">Number of Passengers:</label>
-            <input id="numberOfPassengers" type="number" class="form-control" min="0" value="<%= request.numPassengers%>" name="numPassengers">
+            <input id="numberOfPassengers" type="number" class="form-control" min="0" max="5" value="<%= request.numPassengers%>" name="numPassengers">
         </div>
 
         <div class="form-group">
@@ -60,6 +59,11 @@
         <div class="form-group">
             <label for="timeReceived">Time Received:</label>
             <input id="timeReceived" type="text" class="form-control" value="<%= request.timeIn%>" name="timeIn">
+        </div>
+
+        <div class="form-group">
+            <label for="vanNumber">Van Number:</label>
+            <input id="vanNumber" type="text" class="form-control" value="<%= request.vanNumber%>" name="vanNumber">
         </div>
 
         <div class="form-group text-center">
