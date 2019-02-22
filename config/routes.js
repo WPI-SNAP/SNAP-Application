@@ -144,6 +144,42 @@ module.exports = function (app, config, passport) {
         });
     });
 
+    // Post route that returns all the new requests from the newRequests Table
+    app.get('/api/getAllNewReq', function (req, res) {
+
+        let allNewRequests = [];
+        let currNewRequest = 0;
+
+        let dispatcherDB = mysql.createConnection({
+            host: 'snapdispatcherdb.ca40maoxylrp.us-east-1.rds.amazonaws.com',
+            port: '3306',
+            user: 'masterAdmin',
+            password: 'Pa55word',
+            database: 'snapDB'
+        });
+
+        // Execute the insert statement
+        dispatcherDB.query('SELECT * FROM newRequests', (err, rows) => {
+            if (err) {
+                return console.error(err.message);
+            } else {
+
+                for (let i in rows) {
+                    allNewRequests[currNewRequest++] = {
+                        idnewRequests: rows[i].idnewRequests,
+                        rideTo: rows[i].rideTo,
+                        rideFrom: rows[i].rideFrom,
+                        numPassengers: rows[i].numPassengers,
+                        accommodations: rows[i].accommodations,
+                        timeIn: rows[i].timeIn
+                    };
+                }
+                dispatcherDB.end();
+                res.send(allNewRequests);
+            }
+        })
+    });
+
     // Displays AddRequest Page
     app.get('/addRequest', function (req, res) {
         res.render('dispatcher/addRequest.ejs');
