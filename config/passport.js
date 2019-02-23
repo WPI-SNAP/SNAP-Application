@@ -1,4 +1,5 @@
 let LocalStrategy = require('passport-local').Strategy;
+const metadata = require('passport-saml-metadata');
 let SamlStrategy = require('passport-saml').Strategy;
 let mysql = require('mysql');
 let bcrypt = require('bcrypt');
@@ -12,7 +13,7 @@ let connection = mysql.createConnection({
 });
 
 // expose this function to our app using module.exports
-module.exports = function (passport, config) {
+module.exports = function (app, passport, config) {
 
     // =========================================================================
     // passport session setup ==================================================
@@ -122,22 +123,26 @@ module.exports = function (passport, config) {
     ////////////////////////////////////////////////////////////
     // SAML Logins
     ////////////////////////////////////////////////////////////
-    passport.use(new SamlStrategy(
-        {
-            path: config.passport.saml.path,
-            entryPoint: config.passport.saml.entryPoint,
-            issuer: config.passport.saml.issuer,
-        },
-        function (profile, done) {
-            // TODO: Find out what is returned here from WPI
-            return done(null,
-                {
-                    id: profile.uid,
-                    email: profile.email,
-                    displayName: profile.cn,
-                    firstName: profile.givenName,
-                    lastName: profile.sn
-                });
+    metadata.fetch(config.passport.saml.metadata)
+        .then(function (reader) {
+            const strategyConfig = metadata.toPassportConfig(reader);
+            strategyConfig.realm = config.passport.saml.issuer, strategyConfig.protocol = 'samlp';
+
+            passport.use('saml', new SamlStrategy(strategyConfig, function (profile, done) {
+                profile = metadata.claimsToCamelCase(profile, reader.claimSchema);
+                return done(null, profile);
+            }));
+
+            passport.serializeUser(function(user, done) {
+                done(null, user);
+            });
+
+            passport.deserializeUser(function(user, done) {
+                done(null, user);
+            });
         })
-    );
+        .catch((err) => {
+            console.error('Error loading SAML metadata', err);
+            process.exit(1);
+        });
 };

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 
 let path = require("path");
@@ -8,13 +10,14 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
+const metadata = require('passport-saml-metadata').metadata;
 let mysql = require('mysql');
 let ejs = require('ejs');
 
 var env = process.env.NODE_ENV || 'development';
-const config = require('./config/config')[env];
+const config = require('./config/config.js')[env];
 
-require('./config/passport.js')(passport, config);
+require('./config/passport.js')(app, passport, config);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -52,6 +55,8 @@ app.use(session({secret: 'SNAPproject',
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+metadata(app)(config.passport.saml);
 
 //Define express js config
 require('./config/routes.js')(app, config, passport);
