@@ -29,12 +29,12 @@
 
 <div class="container" style="align-content: center">
 
-    <h2 style="text-align: center">Delete Ride Request</h2>
-    <form action="/submitDeleteNewRequest" method="post">
+    <h2 style="text-align: center">Reject Ride Request</h2>
+    <form action="/submitRejectNewRequest" method="post">
 
         <div class="form-group">
             <label for="requestID">Request ID:</label>
-            <input id="requestID" type="text" class="form-control" value="<%= request.idnewRequests%>" name="requestID">
+            <input id="requestID" type="text" class="form-control" value="<%= request.idnewRequests%>" name="requestID" readonly>
         </div>
 
         <div class="form-group">
@@ -59,11 +59,11 @@
 
         <div class="form-group">
             <label for="timeReceived">Time Received:</label>
-            <input id="timeReceived" type="text" class="form-control" value="<%= request.timeIn%>" name="timeIn">
+            <input id="timeReceived" type="text" class="form-control" value="<%= request.timeIn%>" name="timeIn" readonly>
         </div>
 
         <div class="form-group text-center">
-            <input type="submit" id="submit" class="btn btn-secondary btn-lg btn-danger" value="Delete Request">
+            <input type="submit" id="submit" class="btn btn-secondary btn-lg btn-danger" value="Reject Request">
         </div>
     </form>
 </div>
