@@ -1,0 +1,79 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.form {
+    width: 800px;
+    margin: 50px auto 20px;
+}
+
+
+ul h3 {
+    text-align: center;
+    z-index: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #AC2B37;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size:20px;
+
+}
+
+/* Change the link color to #111 (black) on hover */
+a:hover {
+    background-color: gray;
+}
+
+h2 {
+    text-align: center;
+    padding-bottom: 8px;
+    margin-top:20px;
+}
+
+
+/* Navbar Styles */
+
+nav {
+    background: #aaa;
+    box-shadow: 0px 5px 0px #80b3ff;
+}
+
+.navbar {
+    background-color: #ac2b37;
+
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+    color: #ffbbbc;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+/*End Nav bar style*/
+
+.form-label{
+    font: 300 16px 'Lato', sans-serif ;
+}
+
