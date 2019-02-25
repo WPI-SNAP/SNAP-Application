@@ -1,32 +1,17 @@
-const os = require('os');
-const assert = require('assert');
-const fileCache = require('file-system-cache').default;
-
-assert.ok(process.env.SAML_ISSUER, 'Environment variable SAML_ISSUER is required');
-assert.ok(process.env.SAML_METADATA, 'Environment variable SAML_METADATA is required');
-
-const hostname = process.env.HOSTNAME || os.hostname();
-const port = process.env.PORT || 4300;
-const host = hostname + (port != 443 ? ':' + port : '');
-
-module.exports = {
-    development: {
-        passport: {
-            strategy: 'saml',
-            saml: {
-                path: '/login/callback',
-                callbackUrl: `https://${host}/login/callback`,
-                logoutCallbackUrl: `https://${host}/logout`,
-                issuer: process.env.SAML_ISSUER,
-                metadata: {
-                    url: process.env.SAML_METADATA,
-                    timeout: process.env.SAML_METADATA_TIMEOUT || 1500,
-                    backupStore: fileCache({
-                        basePath: process.env.SAML_METADATA_CACHE_DIR || os.tmpdir(),
-                        ns: process.env.SAML_ISSUER
-                    })
-                }
-            }
-        }
-    }
-};
+// module.exports = {
+//     development: {
+//         app: {
+//             name: 'Passport SAML strategy example',
+//             port: process.env.PORT || 3000
+//         },
+//         passport: {
+//             strategy: 'saml',
+//             saml: {
+//                 path: process.env.SAML_PATH || '/login/callback',
+//                 entryPoint: process.env.SAML_ENTRY_POINT || 'https://openidp.feide.no/simplesaml/saml2/idp/SSOService.php',
+//                 issuer: 'passport-saml',
+//                 cert: process.env.SAML_CERT || null
+//             }
+//         }
+//     }
+// };
