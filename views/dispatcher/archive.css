@@ -4,6 +4,12 @@ body {
     margin: 0;
 }
 
+h2 {
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+
 /* START: Navbar Styles */
 .navbar {
     background-color: #ac2b37;
@@ -35,11 +41,6 @@ li a:hover {
 
 /* END: Navbar Styles */
 
-h2 {
-    text-align: center;
-    padding-bottom: 8px;
-}
-
 /* START: Table Styles */
 table {
     border-collapse: collapse;
@@ -56,8 +57,12 @@ td {
 }
 
 /* alternate color of table entries*/
-table tr:nth-child(even) td{
+table tr:nth-child(odd) td{
     background-color:#ffbbbc;
+}
+
+table tr:nth-child(even) td{
+    background-color:#DCDCDC;
 }
 
 .archiveID {
@@ -65,11 +70,11 @@ table tr:nth-child(even) td{
 }
 
 .archiveFrom {
-    width: 15%;
+    width: 12.5%;
 }
 
 .archiveTo {
-    width: 15%;
+    width: 12.5%;
 }
 
 .archivePassengers {
@@ -86,5 +91,9 @@ table tr:nth-child(even) td{
 
 .archiveTime {
     width: 15%;
+}
+
+.status{
+    width:5%;
 }
 /* END: Table Styles */

@@ -24,7 +24,7 @@
         </div>
 
         <div style="float:right " class="navbar-header">
-            <a style="color: white" class="navbar-brand clickable-delete" data-id='/deleteNewRequest/<%=request.idnewRequests %>'>Delete Request</a>
+            <a style="color: white" class="navbar-brand clickable-delete" data-id='/deleteNewRequest/<%=request.idnewRequests %>'>Reject Request</a>
         </div>
     </div>
 </nav>
@@ -36,7 +36,7 @@
 
         <div class="form-group">
             <label for="requestID">Request ID:</label>
-            <input id="requestID" type="text" class="form-control" value="<%= request.idnewRequests%>" name="requestID">
+            <input id="requestID" type="text" class="form-control" value="<%= request.idnewRequests%>" name="requestID" readonly>
         </div>
 
         <div class="form-group">
@@ -61,20 +61,20 @@
 
         <div class="form-group">
             <label for="timeReceived">Time Received:</label>
-            <input id="timeReceived" type="text" class="form-control" value="<%= request.timeIn%>" name="timeIn">
+            <input id="timeReceived" type="text" class="form-control" value="<%= request.timeIn%>" name="timeIn" readonly>
         </div>
 
         <div class="form-group">
             <fieldset>
                 <legend style="font-size: 16px">Assign Van Number:</legend>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="vanNumber" id="vanNumber1" value="1">
-                        <label class="form-check-label" for="vanNumber1">1</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" name="vanNumber" id="vanNumber2" value="2" required>
-                        <label class="form-check-label" for="vanNumber2">2</label>
-                    </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="vanNumber" id="vanNumber1" value="1">
+                    <label class="form-check-label" for="vanNumber1">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="vanNumber" id="vanNumber2" value="2" required>
+                    <label class="form-check-label" for="vanNumber2">2</label>
+                </div>
             </fieldset>
         </div>
 

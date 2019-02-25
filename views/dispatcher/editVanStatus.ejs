@@ -13,7 +13,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet'
           type='text/css'>
-    <link rel="stylesheet" href="addRequest.css">
+    <link rel="stylesheet" href="/dispatcher/editVanStatus.css">
+
 </head>
 <body>
 
@@ -21,23 +22,39 @@
 <nav class="navbar">
     <ul class="navbar-nav">
         <li>
-            <a href="/dispatcher">Home</a>
+            <a href="/vanStatus">Back</a>
         </li>
     </ul>
 </nav>
 
 <div class="container" style="align-content: center">
-    <h2 style="text-align: center">Van Maintenance</h2>
+    <h2 style="text-align: center">Edit Van Status</h2>
 
-    <form>
+    <form action="/submitEditVanStatus" method="post">
         <div class="form-group">
-            <label>Van Number</label>
-            <input type="text" class="form-control" name="vanNum">
+            <label for="idvanStatus" class="form-label">ID:</label>
+            <input type="text" class="form-control" id="idvanStatus" value="<%=request.idvanStatus%>" name="idvanStatus" readonly>
         </div>
-
         <div class="form-group">
-            <label>Reason of Maintenance</label>
-            <input type="text" class="form-control" name="reason">
+            <label for="vanNumber" class="form-label">Van Number:</label>
+            <input type="text" class="form-control" id="vanNumber" value="<%=request.vanNumber%>" name="vanNumber" readonly>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <legend class="form-label">Is it under the maintenance?</legend>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="isMaintenanced" id="isMaintenanced1" value="1">
+                    <label class="form-check-label" for="isMaintenanced1">True</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="isMaintenanced" id="isMaintenanced2" value="0" required>
+                    <label class="form-check-label" for="isMaintenanced2">False</label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <label for="vanInfo" class="form-label">Information:</label>
+            <input type="text" class="form-control" id="vanInfo" value="<%=request.vanInfo%>" name="vanInfo">
         </div>
 
         <div class="form-group text-center">

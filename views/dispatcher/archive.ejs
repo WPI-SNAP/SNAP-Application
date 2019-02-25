@@ -8,10 +8,13 @@
     <title>SNAP Dispatcher</title>
     <link rel="icon" href="WPI_logo.png">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
     <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link rel="stylesheet" href="dispatcher/archive.css">
 </head>
 <body>
@@ -31,7 +34,8 @@
     <h2><b>Ride Request Archive</b></h2>
     <!-- Archive Table -->
     <div>
-        <table>
+        <table id="archiveTable">
+            <thead>
             <tr>
                 <th class="archiveID">Ride ID</th>
                 <th class="archiveFrom">From</th>
@@ -40,8 +44,10 @@
                 <th class="archiveAccom">Accommodations</th>
                 <th class="archiveVanNo">Van No.</th>
                 <th class="archiveTime">Time Received</th>
+                <th class="status">Status</th>
             </tr>
-
+            </thead>
+            <tbody>
             <% archivedRequestRows.forEach(function (row) { %>
                 <tr>
                     <td class="archiveID"><%= row.idarchivedRequests %></td>
@@ -51,25 +57,22 @@
                     <td class="archiveAccom"><%= row.accommodations %></td>
                     <td class="archiveVanNo"><%= row.vanNumber %></td>
                     <td class="archiveTime"><%= row.timeIn.slice(4, 21) %></td>
+                    <td class="status"> <%=row.status %></td>
                 </tr>
             <% }); %>
-
+            </tbody>
         </table>
     </div>
 
 </div>
 
+
 <script>
-    // Polls the database every 5 minutes
-
-
-
+    $(document).ready(function(){
+        $('#archiveTable').DataTable()
+    });
 </script>
 
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
