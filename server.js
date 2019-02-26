@@ -59,6 +59,6 @@ app.use(flash());
 require('./config/routes.js')(app, passport);
 
 // Listen for the server to start
-app.listen(port, function () {
+app.listen(port, '130.215.45.233', function () {
     console.log("App is running on PORT: " + port);
 });
