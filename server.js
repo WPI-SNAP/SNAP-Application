@@ -6,15 +6,17 @@ const port = process.env.PORT || 3001;
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const flash = require('connect-flash');
-const passport = require('passport');
+//const flash = require('connect-flash');
+//const passport = require('passport');
 let mysql = require('mysql');
 let ejs = require('ejs');
 
 // var env = process.env.NODE_ENV || 'development';
 // const config = require('./config/config.js')[env];
-// console.log("Config = " + config);
-
+//
+// console.log('Using configuration', config);
+//
+// require('./config/passport')(passport, config);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -36,12 +38,8 @@ var connection = mysql.createConnection({
 });
 
 connection.connect(function (err) {
-    if(err) {
-        console.log(err);
-    }
-    else {
-        console.log("DB is connected!")
-    }
+    if(err) { console.log(err); }
+    else { console.log("DB is connected!") }
 });
 
 //stuff for passport
@@ -51,14 +49,16 @@ app.use(session({secret: 'SNAPproject',
 
 //require('./config/passport.js')(app, passport);
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use(flash());
+
+//console.log("Path = " + config.passport.saml.path);
 
 //Define express js config
-require('./config/routes.js')(app, passport);
-
+//require('./config/routes.js')(app, config, passport);
+require('./config/routes.js')(app);
 // Listen for the server to start
-app.listen(port, '130.215.45.233', function () {
+app.listen(port,  function () {
     console.log("App is running on PORT: " + port);
 });
