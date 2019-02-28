@@ -220,7 +220,7 @@ module.exports = function (app, config, passport) {
         let addRequestStmt = 'INSERT INTO newRequests(rideTo, rideFrom, numPassengers, ' +
             'accommodations, timeIn) VALUES (?, ?, ?, ?, ?)';
 
-        moment.utcOffset(300);
+        moment().utcOffset(300);
         let timeIn = moment(new Date()).toString();
 
 
