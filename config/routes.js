@@ -220,7 +220,11 @@ module.exports = function (app, config, passport) {
         let addRequestStmt = 'INSERT INTO newRequests(rideTo, rideFrom, numPassengers, ' +
             'accommodations, timeIn) VALUES (?, ?, ?, ?, ?)';
 
-        let newRequest = [req.body.goingTo, req.body.comingFrom, req.body.numPassengers, req.body.accommodations, moment(new Date()).toString()];
+        moment.utcOffset(300);
+        let timeIn = moment(new Date()).toString();
+
+
+        let newRequest = [req.body.goingTo, req.body.comingFrom, req.body.numPassengers, req.body.accommodations, timeIn];
 
         // Execute the insert statement
         dispatcherDB.query(addRequestStmt, newRequest, (err, results, fields) => {
